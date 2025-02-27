@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict
 
 
 class RecipeBase(BaseModel):
-    recipe_name: str = "Жвренные пельмени"
+    recipe_name: str = "Жаренные пельмени"
     cooking_time: int = 25
     views: int = 7
     recipe_description: str = "Нежные пельмени с хрустящей корочкой"
