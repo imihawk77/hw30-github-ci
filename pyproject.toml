@@ -6,3 +6,5 @@ python = "^3.12"
 fastapi = "^0.115.9"
 uvicorn = {extras = ["standart"], version = "^0.34.0"}
 pydantic-settings = "^2.8.1"
+alembic = "^1.14.1"
+black = "^25.1.0"
