@@ -7,13 +7,12 @@ from sqlalchemy import insert
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
-from src.core.models import db_helper, Base, Ingredient, Recipe, IngredientsInRecipe
+from src.core.models import Base, Ingredient, IngredientsInRecipe, Recipe
+from src.core.models.db_helper import db_helper
 from src.main import main_app
 
 DATABASE_URL_TEST = "postgresql+asyncpg://test:test@localhost:5432/test"
-engine_test = create_async_engine(
-    DATABASE_URL_TEST, poolclass=NullPool, echo=True
-)
+engine_test = create_async_engine(DATABASE_URL_TEST, poolclass=NullPool, echo=True)
 async_session = async_sessionmaker(bind=engine_test, expire_on_commit=False)
 
 
@@ -22,9 +21,7 @@ async def override_get_async_session() -> AsyncGenerator[AsyncSession, None]:
         yield session
 
 
-main_app.dependency_override[db_helper.session_getter] = (
-    override_get_async_session
-)
+main_app.dependency_override[db_helper.session_getter] = override_get_async_session
 client = TestClient(main_app)
 
 ingredients = [

@@ -4,10 +4,9 @@ from fastapi import  Depends, APIRouter
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-from api.crud import recipe as recipe_crud
 
 
-from src.core.models import db_helper
+from src.core.models.db_helper import db_helper
 from src.core.models.schemas.recipe import RecipeRead, RecipeDetail, RecipeCreate
 
 recipe_route = APIRouter()

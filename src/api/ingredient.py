@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.crud import ingredient as ingredient_crud
 
-from src.core.models import db_helper
+from src.core.models.db_helper import db_helper
 from src.core.models.schemas.ingredient import IngredientCreate, IngredientRead
 
 ingredient_route = APIRouter()
